@@ -17,7 +17,9 @@ defmodule Identicon do
     %Identicon.Image{image | color: {r, g, b}}
   end
 
-  def build_grid image do
-
+  def build_grid (%Identicon.Image{hex: hex} = image) do
+    hex
+    |> Enum.chunk(3)
+    
   end
 end
