@@ -10,12 +10,13 @@ config :discuss,
   ecto_repos: [Discuss.Repo]
 
 # Configures the endpoint
-config :discuss, Discuss.Endpoint,
+config :discuss, DiscussWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "1gHw1amikIsfrh/sNmCHhKoyB8DdfXlhKAH86uPGSHrluLgj5+QheTdIdvidR+O5",
-  render_errors: [view: Discuss.ErrorView, accepts: ~w(html json)],
+  secret_key_base: "/Ix78q1uuTOP5VbITgcRr5IGsg95BM4gvGIbha0yfDrpBPczOFKUO271Z25/aZUV",
+  render_errors: [view: DiscussWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Discuss.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+           adapter: Phoenix.PubSub.PG2],
+  http: [protocol_options: [max_request_line_length: 8192, max_header_value_length: 8192]]
 
 # Configures Elixir's Logger
 config :logger, :console,
