@@ -13,7 +13,11 @@
 
   <body>
     <nav class="light-blue">
-      
+      <div class="nav-wrapper container">
+        <a href="/" class="brand-logo">
+          Discussions
+        </a>
+      </div>
     </nav>
 
     <div class="container">
