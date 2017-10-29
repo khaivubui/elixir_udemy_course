@@ -20,7 +20,7 @@ defmodule Identicon do
   def build_grid (%Identicon.Image{hex: hex} = image) do
     hex
     |> Enum.chunk(3)
-    |> Enum.map(fn(el) -> mirror_row el end)
+    |> Enum.map(&mirror_row/1)
   end
 
   def mirror_row [a, b, c] do
