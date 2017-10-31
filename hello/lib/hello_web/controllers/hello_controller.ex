@@ -1,5 +1,5 @@
 defmodule HelloWeb.HelloController do
-  user HelloWeb, :controller
+  use HelloWeb, :controller
 
   def index conn, _params do
     render conn, "index.html"
