@@ -9,6 +9,8 @@ config :friends, Friends.Repo,
   password: "postgres",
   hostname: "localhost"
 
+config :friends, ecto_repos: [Friends.Repo]
+
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
