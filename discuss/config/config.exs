@@ -15,7 +15,8 @@ config :discuss, Discuss.Endpoint,
   secret_key_base: "mTJ/vSPQgWSkbwIR8UsBZOSI9UsTwmu0BY2+nQQu9j7oOV8dqnXUkBuKaWcAugj7",
   render_errors: [view: Discuss.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Discuss.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+           adapter: Phoenix.PubSub.PG2],
+  http: [protocol_options: [max_request_line_length: 8192, max_header_value_length: 8192]]
 
 # Configures Elixir's Logger
 config :logger, :console,
