@@ -7,8 +7,12 @@ defmodule Discuss.TopicController do
     render conn, :new, changeset: changeset
   end
 
-  def create conn, %{"topic" => topic} do
+  def create conn, %{"topic" => topic} do # topic == %{"title" => "abc"}
     changeset = Topic.changeset(%Topic{}, topic)
-    Repo.insert(changeset)
+
+    case Repo.insert(changeset) do
+      {:ok, post} -> IO.inspect(post)
+      {:error, changeset} -> IO.inspect(changeset)
+    end
   end
 end

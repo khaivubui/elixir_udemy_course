@@ -1,3 +1,4 @@
+<!-- form_for submits %{} with key corresponding to the @changeset (from controller) -->
 <%= form_for @changeset, topic_path(@conn, :create), fn f -> %>
   <div class="form-group">
     <%= text_input f, :title, placeholder: "Title", class: "form-control" %>
