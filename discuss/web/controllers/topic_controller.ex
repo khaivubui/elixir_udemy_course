@@ -8,7 +8,7 @@ defmodule Discuss.TopicController do
   end
 
   def create conn, %{"topic" => topic} do
-    
-
+    changeset = Topic.changeset(%Topic{}, topic)
+    Repo.insert(changeset)
   end
 end
