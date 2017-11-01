@@ -1,1 +1,6 @@
-<h1>New Test Form</h1>
+<%= form_for @changeset, topic_path(@conn, :create), fn f -> %>
+  <label>
+    Title: <%= text_input f, :name %>
+  </label>
+  <%= submit "Submit" %>
+<% end %>

@@ -3,7 +3,7 @@ defmodule Discuss.TopicController do
   alias Discuss.Topic
 
   def new conn, _params do
-    changeset = Topic.changeset %Topic{}, %{}
-    render conn, :new
+    changeset = Topic.changeset %Topic{}
+    render conn, :new, changeset: changeset
   end
 end
