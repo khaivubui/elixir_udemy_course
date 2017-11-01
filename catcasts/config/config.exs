@@ -15,7 +15,8 @@ config :catcasts, CatcastsWeb.Endpoint,
   secret_key_base: "Qd4FosTm/njGDJXtxBSSOcgeJaOSOa4UR8w8tuWATUDXNIxH0GFZKjbJb0uHbs7W",
   render_errors: [view: CatcastsWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Catcasts.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+           adapter: Phoenix.PubSub.PG2],
+  http: [protocol_options: [max_request_line_length: 8192, max_header_value_length: 8192]]
 
 # Configures Elixir's Logger
 config :logger, :console,
