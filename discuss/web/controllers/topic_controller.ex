@@ -3,7 +3,7 @@ defmodule Discuss.TopicController do
   alias Discuss.Topic
 
   def index conn, _params do
-    topics = Repo.all Topic
+    topics = Repo.all(from t in Topic, order_by: t.id)
     render conn, :index, topics: topics
   end
 
