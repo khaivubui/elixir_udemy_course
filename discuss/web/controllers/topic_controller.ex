@@ -16,7 +16,8 @@ defmodule Discuss.TopicController do
     changeset = Topic.changeset(%Topic{}, topic)
 
     case Repo.insert(changeset) do
-      {:ok, post} -> IO.inspect(post)
+      {:ok, post} ->
+        redirect conn, to: "/"
       {:error, changeset} ->
         render conn, :new, changeset: changeset
     end
