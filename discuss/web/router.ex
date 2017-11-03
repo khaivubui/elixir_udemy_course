@@ -18,7 +18,7 @@ defmodule Discuss.Router do
 
     get "/", TopicController, :index
     resources "/topics", TopicController, only: [
-      :new, :create, :index
+      :new, :create, :index, :edit, :update
     ]
   end
 
