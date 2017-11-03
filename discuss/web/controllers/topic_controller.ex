@@ -48,7 +48,13 @@ defmodule Discuss.TopicController do
   def delete conn, %{"id" => topic_id} do
     topic = Repo.get(Topic, topic_id)
 
-    Repo.delete(topic)
-    redirect(conn, to: topic_path(conn, :index))
+    case Repo.delete(topic) do
+      {:ok, _topic} ->
+        redirect(conn, to: topic_path(conn, :index))
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "Unable to delete")
+        |> redirect(to: topic_path(conn, :index))
+    end
   end
 end
