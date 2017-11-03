@@ -29,6 +29,6 @@ defmodule Discuss.TopicController do
   def edit conn, %{"id" => topic_id} do
     topic = Repo.get Topic, topic_id
     changeset = Topic.changeset topic
-    render conn, :edit, changeset: changeset
+    render conn, :edit, changeset: changeset, topic: topic
   end
 end
