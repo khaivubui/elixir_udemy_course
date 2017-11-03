@@ -32,9 +32,9 @@ defmodule Discuss.TopicController do
     render conn, :edit, changeset: changeset
   end
 
-  def update conn, %{"topic" => topic_data, "id" => topic_id} do
+  def update conn, %{"topic" => topic, "id" => topic_id} do
     changeset = Repo.get(Topic, topic_id)
-      |> Topic.changeset(topic_data)
+      |> Topic.changeset(topic)
 
     case Repo.update(changeset) do
       {:ok, topic} ->
