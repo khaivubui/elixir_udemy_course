@@ -8,8 +8,7 @@ defmodule Discuss.TopicController do
   end
 
   def new conn, _params do
-    topic = %Topic{}
-    changeset = Topic.changeset topic
+    changeset = Topic.changeset %Topic{}
     render conn, :new, changeset: changeset
   end
 
@@ -27,8 +26,8 @@ defmodule Discuss.TopicController do
   end
 
   def edit conn, %{"id" => topic_id} do
-    topic = Repo.get Topic, topic_id
-    changeset = Topic.changeset topic
+    changeset = Repo.get(Topic, topic_id)
+      |> Topic.changeset
     render conn, :edit, changeset: changeset
   end
 
