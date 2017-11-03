@@ -44,4 +44,11 @@ defmodule Discuss.TopicController do
         render conn, :edit, changeset: changeset
     end
   end
+
+  def delete conn, %{"id" => topic_id} do
+    topic = Repo.get(Topic, topic_id)
+
+    Repo.delete(topic)
+    redirect(conn, to: topic_path(conn, :index))
+  end
 end
