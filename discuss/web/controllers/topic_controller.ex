@@ -33,8 +33,8 @@ defmodule Discuss.TopicController do
   end
 
   def update conn, %{"topic" => topic_data, "id" => topic_id} do
-    topic = Repo.get Topic, topic_id
-    changeset = Topic.changeset topic, topic_data
+    changeset = Repo.get(Topic, topic_id)
+      |> Topic.changeset(topic_data)
 
     case Repo.update(changeset) do
       {:ok, topic} ->
