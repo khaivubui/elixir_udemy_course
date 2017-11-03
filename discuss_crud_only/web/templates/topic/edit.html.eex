@@ -1,0 +1,12 @@
+<%= form_for @changeset,
+             topic_path(@conn, :update, @changeset.data),
+             fn f -> %>
+  <div class="form-group">
+    <%= text_input f, :title, placeholder: "Title",
+                              class: "form-control",
+                              autofocus: true,
+                              onfocus: "this.select()" %>
+    <%= error_tag f, :title %>
+    <%= submit "Update Topic", class: "btn btn-primary" %>
+  </div>
+<% end %>
