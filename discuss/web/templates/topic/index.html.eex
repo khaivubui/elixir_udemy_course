@@ -1,4 +1,4 @@
-<h2>Topics</h2>
+<h5>Topics</h5>
 
 <ul class="collection">
   <%= Enum.map @topics, fn topic -> %>
@@ -7,3 +7,9 @@
     </li>
   <% end %>
 </ul>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-light red">
+    <i class="material-icons">add</i>
+  </a>
+</div>
