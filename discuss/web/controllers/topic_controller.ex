@@ -24,4 +24,8 @@ defmodule Discuss.TopicController do
         render conn, :new, changeset: changeset
     end
   end
+
+  def edit conn, %{"id" => topic_id} do
+    
+  end
 end
