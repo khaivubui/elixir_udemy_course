@@ -4,7 +4,7 @@
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
 use Mix.Config
-import Secret
+
 # General application configuration
 config :discuss,
   ecto_repos: [Discuss.Repo]
