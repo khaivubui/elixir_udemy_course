@@ -12,7 +12,13 @@ defmodule Discuss.AuthController do
     }
 
     changeset = %User{} |> User.changeset(user_params)
+    insert_or_find_user changeset
+  end
 
-    
+  defp insert_or_find_user changeset do
+    case Repo.get_by(User, email: changeset.changes.email) do
+      nil -> Repo.insert(changeset)
+      user -> {:ok, user}
+    end
   end
 end
