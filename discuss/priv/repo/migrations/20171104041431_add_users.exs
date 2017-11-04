@@ -7,7 +7,7 @@ defmodule Discuss.Repo.Migrations.AddUsers do
       add :provider, :string
       add :token, :string
 
-      timestamps
+      timestamps()
     end
   end
 end
