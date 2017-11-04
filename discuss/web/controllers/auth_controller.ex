@@ -17,22 +17,20 @@ defmodule Discuss.AuthController do
   end
 
   defp signin conn, changeset do
-    case insert_or_find_user changeset do
-      {:ok, user} ->
-        conn
-        |> put_flash(:info, "Welcome back, #{user.email}")
-        |> put_session(:user_id, user.id)
-      {:error, _reason} ->
-        conn
-        |> put_flash(:error, "Error signing in")
-    end
-    |> redirect(to: topic_path(conn, :index))
-  end
-
-  defp insert_or_find_user changeset do
     case Repo.get_by(User, email: changeset.changes.email) do
       nil -> Repo.insert(changeset)
       user -> {:ok, user}
     end
+    
+    |> case do
+      {:ok, user} ->
+        conn
+          |> put_flash(:info, "Welcome back, #{user.email}")
+          |> put_session(:user_id, user.id)
+      {:error, _reason} ->
+        conn
+          |> put_flash(:error, "Error signing in")
+    end
+    |> redirect(to: topic_path(conn, :index))
   end
 end
