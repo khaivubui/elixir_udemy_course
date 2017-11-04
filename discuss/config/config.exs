@@ -4,7 +4,7 @@
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
 use Mix.Config
-
+import Secret
 # General application configuration
 config :discuss,
   ecto_repos: [Discuss.Repo]
@@ -31,7 +31,3 @@ config :ueberauth, Ueberauth,
   providers: [
     github: { Ueberauth.Strategy.Github, [] }
   ]
-
-config :ueberauth, Ueberauth.Strategy.Github.Oauth,
-  client_id: Secret.client_id,
-  client_secret: Secret.client_secret
