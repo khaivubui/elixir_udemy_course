@@ -21,7 +21,7 @@ defmodule Discuss.AuthController do
       nil -> Repo.insert(changeset)
       user -> {:ok, user}
     end
-    
+
     |> case do
       {:ok, user} ->
         conn
@@ -31,6 +31,7 @@ defmodule Discuss.AuthController do
         conn
           |> put_flash(:error, "Error signing in")
     end
+    
     |> redirect(to: topic_path(conn, :index))
   end
 end
