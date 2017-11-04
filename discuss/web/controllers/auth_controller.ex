@@ -12,7 +12,22 @@ defmodule Discuss.AuthController do
     }
 
     changeset = %User{} |> User.changeset(user_params)
-    insert_or_find_user changeset
+
+    signin conn, changeset
+  end
+
+  defp signin conn, changeset do
+    case insert_or_find_user changeset do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "Welcome back, #{user.email}")
+        |> put_session(:user_id, user.id)
+        |> redirect(to: topic_path(conn, :index))
+      {:error, _reason} ->
+        conn
+        |> put_flash(:error, "Error signing in")
+        |> redirect(to: topic_path(conn, :index))
+    end
   end
 
   defp insert_or_find_user changeset do
