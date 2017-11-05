@@ -76,7 +76,7 @@ const renderComments = comments => {
     `<li class="collection-item">${content}</li>`
   ));
 
-  
+  document.querySelector('.collection').innerHTML = renderedComments.join('');
 };
 
 window.createSocket = createSocket;
