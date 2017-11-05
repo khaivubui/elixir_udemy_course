@@ -57,12 +57,8 @@ socket.connect();
 const createSocket = topicId => {
   const channel = socket.channel(`comments:${topicId}`, {});
   channel.join()
-  .receive("ok", ({comments}) => {
-    renderComments(comments);
-  })
-  .receive("error", resp => {
-
-  });
+  .receive("ok", ({comments}) => renderComments(comments))
+  .receive("error", resp => console.log("unable to join", resp));
 
   document.querySelector('button').addEventListener('click', () => {
     const content = document.querySelector('textarea').value;
