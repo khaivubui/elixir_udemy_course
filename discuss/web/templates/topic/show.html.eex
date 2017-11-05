@@ -3,5 +3,7 @@
 </h5>
 
 <script>
-  window.createSocket(<%= @topic.id %>)
+  document.addEventListener('DOMContentLoaded', () =>
+    window.createSocket(<%= @topic.id %>)
+  );
 </script>
