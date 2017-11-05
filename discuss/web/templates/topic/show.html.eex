@@ -1,3 +1,7 @@
 <h5>
   <%= @topic.title %>
 </h5>
+
+<script>
+  window.createSocket(<%= @topic.id %>)
+</script>
