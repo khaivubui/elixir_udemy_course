@@ -60,7 +60,10 @@ const createSocket = topicId => {
   .receive("ok", ({comments}) => renderComments(comments))
   .receive("error", resp => console.log("unable to join", resp));
 
-  channel.on(`comments:${topicId}:new`, renderComment);
+  channel.on(
+    `comments:${topicId}:new`,
+    ({comment}) => renderComment(comment)
+  );
 
   document.querySelector('button').addEventListener('click', () => {
     const content = document.querySelector('textarea').value;
@@ -76,7 +79,9 @@ const renderComments = comments => {
 };
 
 const renderComment = comment => {
-  
+  console.log(comment);
+  const renderedComment = commentTemplate(comment);
+  document.querySelector('.collection').innerHTML += renderedComment;
 };
 
 const commentTemplate = ({content}) => (
