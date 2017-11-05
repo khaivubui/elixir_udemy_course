@@ -57,12 +57,12 @@ socket.connect();
 const createSocket = topicId => {
   const channel = socket.channel(`comments:${topicId}`, {});
   channel.join()
-  .receive("ok", ({comments}) => renderComments(comments))
+  .receive("ok", renderComments)
   .receive("error", resp => console.log("unable to join", resp));
 
   channel.on(
     `comments:${topicId}:new`,
-    ({comment}) => renderComment(comment)
+    renderComment
   );
 
   document.querySelector('button').addEventListener('click', () => {
@@ -72,13 +72,13 @@ const createSocket = topicId => {
   });
 };
 
-const renderComments = comments => {
+const renderComments = ({comments}) => {
   const renderedComments = comments.map(commentTemplate);
 
   document.querySelector('.collection').innerHTML = renderedComments.join('');
 };
 
-const renderComment = comment => {
+const renderComment = ({comment}) => {
   console.log(comment);
   const renderedComment = commentTemplate(comment);
   document.querySelector('.collection').innerHTML += renderedComment;
