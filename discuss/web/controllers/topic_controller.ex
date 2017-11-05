@@ -17,6 +17,7 @@ defmodule Discuss.TopicController do
   end
 
   def create conn, %{"topic" => topic} do # topic == %{"title" => "abc"}
+
     changeset = Topic.changeset(%Topic{}, topic)
 
     case Repo.insert(changeset) do
