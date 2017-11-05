@@ -6,10 +6,21 @@ defmodule Discuss.CommentsChannel do
     topic_id = String.to_integer(topic_id)
     topic = Repo.get(Topic, topic_id)
 
-    {:ok, %{}, socket}
+    {:ok, %{}, assign(socket, :topic, topic)}
   end
 
-  def handle_in name, message, socket do
-    {:reply, :ok, socket}
+  def handle_in name, %{"content" => content}, socket do
+    topic = socket.assigns.topic
+
+    changeset = topic
+      |> build_assoc(:comments)
+      |> Comments.changeset(%{content: content})
+
+    case Repo.insert changeset do
+      {:ok, comment} ->
+        {:reply, :ok, socket}
+      {:error, _reason} ->
+        {:reply, {:error, %{errors: changeset}}, socket}
+    end
   end
 end
