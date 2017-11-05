@@ -5,7 +5,8 @@ defmodule Discuss.Plugs.SetUser do
   alias Discuss.Repo
   alias Discuss.User
 
-  def init(default), do: default
+  def init _ do
+  end
 
   def call conn, _params do
     user_id = get_session(conn, :user_id)
