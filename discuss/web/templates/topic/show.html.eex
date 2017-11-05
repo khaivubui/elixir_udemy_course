@@ -5,6 +5,8 @@
 <div class="input-field">
   <textarea class="materialize-textarea" rows="8" cols="80"></textarea>
   <button class="btn">Add Comment</button>
+  <ul class="collection">
+  </ul>
 </div>
 
 <script>
