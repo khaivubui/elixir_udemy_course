@@ -16,7 +16,8 @@ defmodule Discuss.TopicController do
   end
 
   def show conn, %{"id" => topic_id} do
-    topic = Repo.get(Topic, topic_id)
+    topic = Repo.get Topic, topic_id
+    render conn, :show, topic: topic
   end
 
   def new conn, _params do
