@@ -6,6 +6,6 @@ defmodule Discuss.CommentsChannel do
   end
 
   def handle_in do
-
+    {:reply, :ok, socket}
   end
 end
