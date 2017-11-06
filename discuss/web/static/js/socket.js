@@ -84,8 +84,10 @@ const renderComment = ({comment}) => {
   document.querySelector('.collection').innerHTML += renderedComment;
 };
 
-const commentTemplate = ({content}) => (
-  `<li class="collection-item">${content}</li>`
+const commentTemplate = ({content, user}) => (
+  `<li class="collection-item">
+    ${user && user.email || 'Anonymous'}: ${content}
+  </li>`
 );
 
 window.createSocket = createSocket;
